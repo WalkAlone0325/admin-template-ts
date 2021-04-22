@@ -7,6 +7,9 @@ import store from '@/store'
 import ElementPlus from 'element-plus'
 import 'element-plus/lib/theme-chalk/index.css'
 
+// 导入公共样式
+import './style/index.scss'
+
 const app = createApp(App)
 
 app.use(router).use(store).use(ElementPlus).mount('#app')

@@ -27,7 +27,9 @@ router.beforeEach((to, _from, next) => {
   NProgress.start()
   document.title = to.meta.title as string // 动态title
   // 全部重定向到登录页
-  whiteList.indexOf(to.path) !== -1 || storageSession.getItem('info') ? next() : next('/login')
+  // whiteList.indexOf(to.path) !== -1 || storageSession.getItem('info') ? next() : next('/login')
+  // 编写不做拦截
+  next()
 })
 
 router.afterEach(() => {

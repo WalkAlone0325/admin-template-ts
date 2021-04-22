@@ -36,7 +36,7 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
        */
       port: VITE_PORT,
       // 本地跨域代理
-      proxy: createProxy(VITE_PROXY),
+      // proxy: createProxy(VITE_PROXY),
     },
     plugins: [
       vue(),
