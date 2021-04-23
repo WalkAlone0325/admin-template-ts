@@ -5,7 +5,14 @@ const {
   sidebarConfig: { title, logoUrl, isShow },
 } = defaultSettings
 
-const state = {
+export interface SettingsState {
+  isShow: boolean
+  title: string
+  logoUrl: string
+  fixedHeader: boolean
+}
+
+const state: SettingsState = {
   isShow,
   title,
   logoUrl,
@@ -13,7 +20,7 @@ const state = {
 }
 
 const mutations = {
-  CHANGE_SETTING: (state: any, { key, value }) => {
+  CHANGE_SETTING: (state: any, { key, value }: any) => {
     if (state.hasOwnProperty(key)) {
       state[key] = value
     }
@@ -21,7 +28,7 @@ const mutations = {
 }
 
 const actions = {
-  changeSetting({ commit }, data) {
+  changeSetting({ commit }: any, data: any) {
     commit('CHANGE_SETTING', data)
   },
 }

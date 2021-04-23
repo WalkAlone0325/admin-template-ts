@@ -1,8 +1,11 @@
 import { RouteRecordRaw } from 'vue-router'
-import {} from 'vuex'
 import { routes } from '@/router/routes'
 
-// 路由处理
+/**
+ * 路由处理
+ * @param data 路由表数据
+ * @returns 处理后的路由表
+ */
 function filterRoutes(data: RouteRecordRaw[]) {
   return data
     .filter(routeslist => !routeslist.meta?.hidden)
@@ -15,8 +18,12 @@ function filterRoutes(data: RouteRecordRaw[]) {
     })
 }
 
-// const state = {
-//   routeslist: filterRoutes(routes)
+// interface State {
+//   routeslist: RouteRecordRaw[]
+// }
+
+// const state: State = {
+//   routeslist: [],
 // }
 
 const getters = {

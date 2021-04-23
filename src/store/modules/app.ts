@@ -1,5 +1,8 @@
 import { storageLocal } from '@/utils/storage'
-interface stateInter {
+import { ActionTree, Module, MutationTree } from 'vuex'
+import { RootState } from '..'
+
+export interface AppState {
   sidebar: {
     opened: Boolean
     withoutAnimation: Boolean
@@ -13,8 +16,8 @@ const state = {
   },
 }
 
-const mutations = {
-  TOGGLE_SIDEBAR: (state: stateInter): void => {
+const mutations: MutationTree<AppState> = {
+  TOGGLE_SIDEBAR: (state: AppState): void => {
     state.sidebar.opened = !state.sidebar.opened
     state.sidebar.withoutAnimation = false
     if (state.sidebar.opened) {
@@ -23,14 +26,14 @@ const mutations = {
       storageLocal.setItem('sidebarStatus', 0)
     }
   },
-  CLOSE_SIDEBAR: (state: stateInter, withoutAnimation: Boolean) => {
+  CLOSE_SIDEBAR: (state: AppState, withoutAnimation: boolean) => {
     storageLocal.setItem('sidebarStatus', 0)
     state.sidebar.opened = false
     state.sidebar.withoutAnimation = withoutAnimation
   },
 }
 
-const actions = {
+const actions: ActionTree<AppState, RootState> = {
   // @ts-ignore
   toggleSideBar({ commit }) {
     commit('TOGGLE_SIDEBAR')
@@ -39,10 +42,6 @@ const actions = {
   closeSideBar({ commit }, { withoutAnimation }) {
     commit('CLOSE_SIDEBAR', withoutAnimation)
   },
-  // @ts-ignore
-  toggleDevice({ commit }, device) {
-    commit('TOGGLE_DEVICE', device)
-  },
 }
 
 export default {
@@ -50,4 +49,4 @@ export default {
   state,
   mutations,
   actions,
-}
+} as Module<AppState, RootState>

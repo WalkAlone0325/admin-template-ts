@@ -60,6 +60,39 @@ export const routes: Array<RouteRecordRaw> = [
           savedPosition: true,
         },
       },
+      {
+        path: '/components/context-menu',
+        name: 'context-menu',
+        component: () => import('@/views/components/context-menu/index.vue'),
+        meta: {
+          title: '右键菜单',
+          icon: 'el-icon-folder-opened',
+          hidden: false,
+          savedPosition: true,
+        },
+      },
+      {
+        path: '/components/markdown',
+        name: 'markdown',
+        component: () => import('@/views/components/markdown/index.vue'),
+        meta: {
+          title: 'MD编辑器',
+          icon: 'el-icon-document-add',
+          hidden: false,
+          savedPosition: true,
+        },
+      },
+      {
+        path: '/components/echarts',
+        name: 'echarts',
+        component: () => import('@/views/echarts/index.vue'),
+        meta: {
+          title: 'Echarts',
+          icon: 'el-icon-s-data',
+          hidden: false,
+          savedPosition: true,
+        },
+      },
     ],
   },
   {
