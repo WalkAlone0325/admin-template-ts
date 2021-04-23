@@ -4,9 +4,9 @@ import Layout from '@/layout/index.vue'
 export const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'home',
+    name: 'layout',
     component: Layout,
-    redirect: '/welcome',
+    redirect: '/home',
     meta: {
       icon: 'el-icon-s-home',
       showLink: true,
@@ -14,13 +14,14 @@ export const routes: Array<RouteRecordRaw> = [
     },
     children: [
       {
-        path: '/welcome',
-        name: 'welcome',
-        component: () => import('@/views/welcome.vue'),
+        path: '/home',
+        name: 'home',
+        component: () => import('@/views/home.vue'),
         meta: {
-          title: 'home',
+          title: '首页',
           showLink: 'true',
           savedPosition: false,
+          icon: 'el-icon-s-platform',
         },
       },
     ],

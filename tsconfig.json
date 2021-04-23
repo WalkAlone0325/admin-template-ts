@@ -9,6 +9,8 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "baseUrl": "./",
+    "allowJs": true,
+    "importHelpers": true,
     "lib": [
       "esnext",
       "dom"
