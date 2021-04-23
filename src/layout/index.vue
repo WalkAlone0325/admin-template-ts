@@ -1,7 +1,7 @@
 <template>
   <div :class="classes" class="app-wrapper">
     <!-- 侧边栏 -->
-    <side-bar class="sidebar-container" />
+    <SideBar class="sidebar-container" />
     <div class="main-container">
       <div :class="{ 'fixed-header': fixedHeader }">
         <!-- 顶部导航栏 -->

@@ -4,7 +4,6 @@ interface stateInter {
     opened: Boolean
     withoutAnimation: Boolean
   }
-  device: String
 }
 
 const state = {
@@ -12,7 +11,6 @@ const state = {
     opened: storageLocal.getItem('sidebarStatus') ? !!+storageLocal.getItem('sidebarStatus') : true,
     withoutAnimation: false,
   },
-  device: 'desktop',
 }
 
 const mutations = {
@@ -29,9 +27,6 @@ const mutations = {
     storageLocal.setItem('sidebarStatus', 0)
     state.sidebar.opened = false
     state.sidebar.withoutAnimation = withoutAnimation
-  },
-  TOGGLE_DEVICE: (state: stateInter, device: String) => {
-    state.device = device
   },
 }
 

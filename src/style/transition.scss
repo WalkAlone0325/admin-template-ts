@@ -42,3 +42,22 @@
 .breadcrumb-leave-active {
   position: absolute;
 }
+
+// .sidebarLogoFade-enter-active {
+//   transition: opacity 1s;
+// }
+
+// .sidebarLogoFade-enter,
+// .sidebarLogoFade-leave-to {
+//   opacity: 0;
+// }
+
+.sidebarLogoFade-enter-active,
+.sidebarLogoFade-leave-active {
+  transition: opacity 0.28s;
+}
+
+.sidebarLogoFade-enter,
+.sidebarLogoFade-leave-active {
+  opacity: 0;
+}

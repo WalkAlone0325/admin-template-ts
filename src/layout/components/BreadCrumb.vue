@@ -1,7 +1,11 @@
 <template>
   <el-breadcrumb class="app-breadcrumb" separator="/">
     <transition-group appear name="breadcrumb">
-      <el-breadcrumb-item v-for="item in breadList" :key="item.path" :to="item.path">
+      <el-breadcrumb-item
+        v-for="(item, index) in breadList"
+        :key="index + item.path"
+        :to="item.path"
+      >
         {{ item.meta.title }}
       </el-breadcrumb-item>
     </transition-group>
@@ -15,7 +19,7 @@ import { useRoute, useRouter, RouteLocationMatched } from 'vue-router'
 export default defineComponent({
   name: 'BreadCrumb',
   setup() {
-    const breadList: Ref<Array<RouteLocationMatched>> = ref([])
+    const breadList: Ref<RouteLocationMatched[]> = ref([])
     const route = useRoute()
     const router = useRouter()
 

@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import NProgress from 'nprogress'
 import { routes } from './routes'
 
-import { storageSession } from '../utils/storage'
+import { storageSession } from '@/utils/storage'
 
 const router = createRouter({
   history: createWebHashHistory(),
