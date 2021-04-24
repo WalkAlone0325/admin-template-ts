@@ -2,8 +2,10 @@
   <div>
     <div>
       <h4>WangEditor 编辑器</h4>
-      <div ref="editor"></div>
-      <div :innerHTML="content.html"></div>
+      <div style="display: flex">
+        <div ref="editor" style="width: 50%"></div>
+        <div :innerHTML="content.html" style="border: 1px solid #eee; width: 50%"></div>
+      </div>
     </div>
     <div id="editor">
       <h4>自定义 md 编辑器</h4>

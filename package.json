@@ -11,6 +11,7 @@
     "dotenv": "^8.2.0",
     "echarts": "^5.1.0",
     "element-plus": "^1.0.2-beta.40",
+    "gsap": "^3.6.1",
     "lodash.debounce": "^4.0.8",
     "marked": "^2.0.3",
     "mockjs": "^1.1.0",

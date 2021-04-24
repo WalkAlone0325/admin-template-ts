@@ -3,20 +3,39 @@
     <el-divider content-position="center">界面显示</el-divider>
     <ul class="setting">
       <li>
-        <span>头部</span>
+        <span>头部Logo</span>
+        <el-switch
+          @change="handleChange"
+          :value="isShow"
+          active-text="隐藏"
+          inactive-text="显示"
+        ></el-switch>
+        <!-- <el-switch v-model="isShow" active-text="开" inactive-text="关"></el-switch> -->
       </li>
     </ul>
   </panel>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
+import { useStore } from 'vuex'
 import Panel from './Panel.vue'
 
 export default defineComponent({
   name: 'Setting',
   components: {
     Panel,
+  },
+  setup() {
+    const isShow = ref(false)
+    const store = useStore()
+
+    const handleChange = () => {
+      store.commit('settings/CHAGNG_SIDEBAR', isShow.value)
+      isShow.value = !isShow.value
+    }
+
+    return { isShow, handleChange }
   },
 })
 </script>

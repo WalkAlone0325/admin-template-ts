@@ -40,6 +40,7 @@ echarts.use([
 ])
 
 export default defineComponent({
+  name: 'Echarts',
   setup() {
     const option = {
       title: [

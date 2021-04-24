@@ -93,6 +93,17 @@ export const routes: Array<RouteRecordRaw> = [
           savedPosition: true,
         },
       },
+      {
+        path: '/components/animates',
+        name: 'animates',
+        component: () => import('@/views/animates/index.vue'),
+        meta: {
+          title: '动画效果',
+          icon: 'el-icon-magic-stick',
+          hidden: false,
+          savedPosition: true,
+        },
+      },
     ],
   },
   {

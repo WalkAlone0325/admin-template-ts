@@ -25,6 +25,9 @@ const mutations = {
       state[key] = value
     }
   },
+  CHAGNG_SIDEBAR: (state: any, payload: boolean) => {
+    state.isShow = payload
+  },
 }
 
 const actions = {
