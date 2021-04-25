@@ -65,6 +65,17 @@ export const routes: Array<RouteRecordRaw> = [
         },
       },
       {
+        path: '/components/modal',
+        name: 'modal',
+        component: () => import('@/views/components/modal/index.vue'),
+        meta: {
+          title: '自定义模态框',
+          icon: 'el-icon-folder',
+          hidden: false,
+          savedPosition: true,
+        },
+      },
+      {
         path: '/components/context-menu',
         name: 'context-menu',
         component: () => import('@/views/components/context-menu/index.vue'),

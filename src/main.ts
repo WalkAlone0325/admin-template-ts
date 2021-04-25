@@ -13,7 +13,12 @@ import './style/index.scss'
 // 自定义指令
 import ContextMenu from '@/components/contextmenu/index'
 
+// 自定义组件
+import regComponent from '@/plugin'
+
 const app = createApp(App)
+
+regComponent(app)
 
 app.directive('contextmenu', ContextMenu)
 app.use(router).use(store).use(ElementPlus).mount('#app')

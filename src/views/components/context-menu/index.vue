@@ -1,6 +1,6 @@
 <template>
-  <div class="context-menu-container" v-contextmenu.dark="contextmenus">
-    <div class="message-context">
+  <div class="context-menu-container">
+    <div class="message-context" v-contextmenu.dark="contextmenus">
       {{ msg }}
     </div>
     <Readme />

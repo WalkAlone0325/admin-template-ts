@@ -13,3 +13,8 @@
     ]
    ```
 6. 选择 ts 版本 "Select TypeScript version" -> "Use workspace version"
+
+## 开发组件
+
+1. 设计组件结构，编写组件配置项
+2. 设计组件 props，和事件 methods
