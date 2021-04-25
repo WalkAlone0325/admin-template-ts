@@ -11,15 +11,18 @@
       <!-- <div class="inter">
       </div> -->
 
-      <el-dropdown trigger="click">
+      <el-dropdown @command="handleDropLink" trigger="click">
         <span class="el-dropdown-link">
-          <p>{{ username }}</p>
+          <p>{{ username.account }}</p>
+          <i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item icon="el-icon-switch-button" @click="logout">
-              Login Out
-            </el-dropdown-item>
+            <!-- <el-dropdown-item icon="el-icon-switch-button" @click="logout"> -->
+            <el-dropdown-item command="1">安全退出</el-dropdown-item>
+            <el-dropdown-item command="2">我的博客</el-dropdown-item>
+            <!-- Login Out -->
+            <!-- </el-dropdown-item> -->
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -31,7 +34,8 @@
 import { computed, defineComponent, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
-import { storageSession } from '@/utils/storage'
+import { delCookie, getCookie } from '@/utils/cookie'
+import settings from '@/settings'
 import Screenfull from './Screenfull.vue'
 import BreadCrumb from './BreadCrumb.vue'
 
@@ -42,20 +46,22 @@ export default defineComponent({
     const store = useStore()
     const router = useRouter()
 
-    // const username = storageSession.getItem('info').username || '独行'
-    const username = 'Loner'
+    const username = getCookie('DEFAULT_TOKEN') ? JSON.parse(getCookie('DEFAULT_TOKEN')) : {}
 
-    const opened = computed(() => store.getters.sidebar.opened)
+    const opened = computed(() => store.state.settings.sidebar.opened)
 
-    // 退出登录
-    const logout = (): void => {
-      storageSession.removeItem('info')
-      router.push('/login')
+    // 右侧下拉菜单
+    const handleDropLink = (index: number): void => {
+      if (index == 1) {
+        delCookie('DEFAULT_TOKEN')
+        router.push('/login')
+      } else if (index == 2) {
+        window.open(settings.blogUrl, '_blank')
+      }
     }
 
     const toggleSideBar = () => {
-      console.log(opened.value)
-      store.dispatch('app/toggleSideBar')
+      store.commit('settings/TOGGLE_SIDEBAR')
     }
 
     onMounted(() => {
@@ -66,7 +72,7 @@ export default defineComponent({
     return {
       opened,
       username,
-      logout,
+      handleDropLink,
       toggleSideBar,
     }
   },
@@ -120,22 +126,24 @@ export default defineComponent({
       }
     }
     .el-dropdown-link {
-      width: 80px;
-      height: 48px;
+      // width: 70px;
+      height: 50px;
+      padding: 5px;
       display: flex;
       align-items: center;
       justify-content: space-around;
-      margin-right: 20px;
+      margin-right: 10px;
       cursor: pointer;
       p {
-        font-size: 13px;
+        font-size: 14px;
       }
       &:hover {
-        background: #f0f0f0;
+        background: #eee;
       }
       img {
         width: 22px;
         height: 22px;
+        border-radius: 50%;
       }
     }
   }

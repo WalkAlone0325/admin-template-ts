@@ -1,6 +1,12 @@
 import { RouteRecordRaw } from 'vue-router'
 import Layout from '@/layout/index.vue'
 
+/**
+ * @param hidden 是否显示在菜单上
+ * @param title 菜单标题
+ * @param icon 图标
+ * @param savedPosition 是否保存浏览位置（keep-alive）
+ */
 export const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -8,9 +14,7 @@ export const routes: Array<RouteRecordRaw> = [
     component: Layout,
     redirect: '/home',
     meta: {
-      // icon: 'el-icon-s-home',
       hidden: false,
-      // savedPosition: false,
     },
     children: [
       {
@@ -107,9 +111,43 @@ export const routes: Array<RouteRecordRaw> = [
     ],
   },
   {
+    path: '/error',
+    name: 'error',
+    component: Layout,
+    redirect: '/error/401',
+    meta: {
+      icon: 'el-icon-position',
+      title: 'error',
+      hidden: false,
+      savedPosition: true,
+    },
+    children: [
+      {
+        path: '/error/401',
+        component: () => import('@/views/error/401.vue'),
+        meta: {
+          title: '401',
+          hidden: false,
+          savedPosition: true,
+          icon: 'el-icon-warning-outline',
+        },
+      },
+      {
+        path: '/error/404',
+        component: () => import('@/views/error/404.vue'),
+        meta: {
+          title: '404',
+          hidden: false,
+          savedPosition: true,
+          icon: 'el-icon-document-delete',
+        },
+      },
+    ],
+  },
+  {
     path: '/login',
     name: 'login',
-    component: () => import('@/views/login.vue'),
+    component: () => import('@/views/login/index.vue'),
     meta: {
       title: '登录',
       hidden: true,
@@ -118,7 +156,7 @@ export const routes: Array<RouteRecordRaw> = [
   {
     path: '/register',
     name: 'register',
-    component: () => import('@/views/register.vue'),
+    component: () => import('@/views/register/index.vue'),
     meta: {
       title: '注册',
       hidden: true,
@@ -131,7 +169,7 @@ export const routes: Array<RouteRecordRaw> = [
     redirect: '/error/404',
     meta: {
       icon: 'el-icon-s-home',
-      title: 'notFound',
+      title: '404',
       hidden: true,
       savedPosition: false,
     },

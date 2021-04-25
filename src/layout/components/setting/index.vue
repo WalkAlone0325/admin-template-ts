@@ -6,11 +6,11 @@
         <span>头部Logo</span>
         <el-switch
           @change="handleChange"
-          :value="isShow"
+          :value="isShowLogo"
           active-text="隐藏"
           inactive-text="显示"
         ></el-switch>
-        <!-- <el-switch v-model="isShow" active-text="开" inactive-text="关"></el-switch> -->
+        <!-- <el-switch v-model=" isShowLogo" active-text="开" inactive-text="关"></el-switch> -->
       </li>
     </ul>
   </panel>
@@ -27,15 +27,15 @@ export default defineComponent({
     Panel,
   },
   setup() {
-    const isShow = ref(false)
+    const isShowLogo = ref(false)
     const store = useStore()
 
     const handleChange = () => {
-      store.commit('settings/CHAGNG_SIDEBAR', isShow.value)
-      isShow.value = !isShow.value
+      store.commit('settings/CHAGNG_SIDEBAR', isShowLogo.value)
+      isShowLogo.value = !isShowLogo.value
     }
 
-    return { isShow, handleChange }
+    return { isShowLogo, handleChange }
   },
 })
 </script>

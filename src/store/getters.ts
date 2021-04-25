@@ -18,17 +18,7 @@ function filterRoutes(data: RouteRecordRaw[]) {
     })
 }
 
-// interface State {
-//   routeslist: RouteRecordRaw[]
-// }
-
-// const state: State = {
-//   routeslist: [],
-// }
-
 const getters = {
-  sidebar: (state: any) => state.app.sidebar,
-  // sidebarLogo: (state: any) => state.settings.sidebarLogo,
   routeslist: () => filterRoutes(routes),
 }
 

@@ -14,8 +14,8 @@
 </template>
 
 <script lang="ts">
-import { useStore } from 'vuex'
-import { computed, defineComponent } from 'vue'
+import { defineComponent } from 'vue'
+import settings from '@/settings'
 
 export default defineComponent({
   name: 'SidebarLogo',
@@ -26,10 +26,9 @@ export default defineComponent({
     },
   },
   setup() {
-    const store = useStore()
     return {
-      title: computed(() => store.state.settings.title),
-      logo: computed(() => store.state.settings.logoUrl),
+      title: settings.sidebarConfig.title,
+      logo: settings.sidebarConfig.logoUrl,
     }
   },
 })

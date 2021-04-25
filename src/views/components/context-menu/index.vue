@@ -13,7 +13,7 @@ import { defineComponent, ref } from 'vue'
 import Readme from './readme.vue'
 
 export default defineComponent({
-  name: 'context-menu',
+  name: 'ContextMenu',
   components: {
     // ContextMenu,
     Readme,

@@ -1,6 +1,6 @@
 <template>
-  <div :class="{ 'has-logo': isShow }">
-    <logo v-if="isShow" :collapse="isCollapse" />
+  <div :class="{ 'has-logo': isShowLogo }">
+    <logo v-if="isShowLogo" :collapse="isCollapse" />
     <!-- {{ showLogo }} -->
 
     <el-scrollbar wrap-class="scrollbar-wrapper">
@@ -29,7 +29,7 @@ import Logo from './Logo.vue'
 import SideBarItem from './SideBarItem.vue'
 
 export default defineComponent({
-  name: 'side-bar',
+  name: 'SideBar',
   components: { SideBarItem, Logo },
   setup() {
     const store = useStore()
@@ -46,8 +46,8 @@ export default defineComponent({
     return {
       routes: computed(() => store.getters.routeslist),
       activeMenu,
-      isShow: computed(() => store.state.settings.isShow),
-      isCollapse: computed(() => !store.getters.sidebar.opened),
+      isShowLogo: computed(() => store.state.settings.isShowLogo),
+      isCollapse: computed(() => !store.state.settings.sidebar.opened),
     }
   },
 })

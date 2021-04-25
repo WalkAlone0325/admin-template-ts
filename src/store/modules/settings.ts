@@ -1,40 +1,42 @@
 import defaultSettings from '@/settings'
+import { MutationTree } from 'vuex'
 
 const {
   fixedHeader,
-  sidebarConfig: { title, logoUrl, isShow },
+  sidebarConfig: { isShowLogo },
 } = defaultSettings
 
 export interface SettingsState {
-  isShow: boolean
-  title: string
-  logoUrl: string
+  isShowLogo: boolean
   fixedHeader: boolean
+  sidebar: {
+    opened: Boolean
+    withoutAnimation: Boolean
+  }
 }
 
 const state: SettingsState = {
-  isShow,
-  title,
-  logoUrl,
+  isShowLogo,
   fixedHeader,
-}
-
-const mutations = {
-  CHANGE_SETTING: (state: any, { key, value }: any) => {
-    if (state.hasOwnProperty(key)) {
-      state[key] = value
-    }
-  },
-  CHAGNG_SIDEBAR: (state: any, payload: boolean) => {
-    state.isShow = payload
+  sidebar: {
+    opened: true,
+    withoutAnimation: false,
   },
 }
 
-const actions = {
-  changeSetting({ commit }: any, data: any) {
-    commit('CHANGE_SETTING', data)
+const mutations: MutationTree<SettingsState> = {
+  // 侧边栏 logo
+  CHAGNG_SIDEBAR: (state: SettingsState, payload: boolean) => {
+    state.isShowLogo = payload
+  },
+  // 侧边栏关合
+  TOGGLE_SIDEBAR: (state: SettingsState) => {
+    state.sidebar.opened = !state.sidebar.opened
+    state.sidebar.withoutAnimation = false
   },
 }
+
+const actions = {}
 
 export default {
   namespaced: true,

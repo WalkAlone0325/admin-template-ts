@@ -39,7 +39,7 @@ export default defineComponent({
     // const WIDTH = ref(992)
     const set: setInter = reactive({
       sidebar: computed(() => {
-        return store.state.app.sidebar
+        return store.state.settings.sidebar
       }),
 
       fixedHeader: computed(() => {
